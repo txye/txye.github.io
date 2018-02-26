@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="T1-T10"/>
 
 
+
+
+  <meta name="keywords" content="刷题, Littleye" />
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://littleyeee.com/"/>
+<link rel="canonical" href="http://littleyeee.com/2018/02/26/T1-T10/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -83,7 +87,7 @@
 
 
 
-    <title> Littleye </title>
+    <title> T1-T10 - Littleye </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -176,14 +180,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2018/02/26/T1-T10/">T1-T10</a>
+          T1-T10
         
       </h1>
 
@@ -210,14 +212,17 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#T1"><span class="toc-text">T1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2"><span class="toc-text">T2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3"><span class="toc-text">T3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T4"><span class="toc-text">T4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T5"><span class="toc-text">T5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T6"><span class="toc-text">T6</span></a></li></ol>
+    </div>
+  </div>
+
 
     <div class="post-content">
       
-        
-        
-
-        
-          <p>写在前面：<br>网上关于剑指offer的解答和整理都非常多，下面是我自己在去年暑假花了大概两周的时间刷完第一遍之后的代码，这次想要自己复习一遍，所以慢慢整理一下，也是写给自己看的，只能保证代码是对的，但不一定是最优的，时间空间复杂度分析也可能有错, 因为我对自己的算法能力一直没有什么自信。我猜基本上不会有人来看我的博客，如果你看到了，请不吝指正，在此谢过啦！</p>
+        <p>写在前面：<br>网上关于剑指offer的解答和整理都非常多，下面是我自己在去年暑假花了大概两周的时间刷完第一遍之后的代码，这次想要自己复习一遍，所以慢慢整理一下，也是写给自己看的，只能保证代码是对的，但不一定是最优的，时间空间复杂度分析也可能有错, 因为我对自己的算法能力一直没有什么自信。我猜基本上不会有人来看我的博客，如果你看到了，请不吝指正，在此谢过啦！</p>
 <h2 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h2><blockquote>
 <p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
 </blockquote>
@@ -291,80 +296,60 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minNumberInRotateArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rotateArray)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> strsize = rotateArray.size();</span><br><span class="line">        <span class="keyword">if</span> (strsize == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strsize - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (rotateArray[i + <span class="number">1</span>] &lt; rotateArray[i]) &#123;</span><br><span class="line">                <span class="keyword">return</span> rotateArray[i + <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rotateArray[strsize - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>明天继续整理…</p>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/01/12/hello-world/">hello world</a>
-        
-      </h1>
+      
 
-      <div class="post-meta">
-        <span class="post-time">
-          2018-01-12
-        </span>
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          <div class="post-category">
+          <div class="post-tags">
             
-              <a href="/categories/心情日记/">心情日记</a>
+              <a href="/tags/刷题/">刷题</a>
             
           </div>
         
         
-        <div class="post-visits"
-             data-url="/2018/01/12/hello-world/"
-             data-title="hello world">
-            阅读次数
-          </div>
         
-      </div>
-    </header>
-
+  <nav class="post-nav">
     
     
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>所有的开始不都是以hello world 开始吗？<br>just begin with “hello world!”</p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2018/01/12/hello-world/">
+        <span class="next-text nav-default">hello world</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
+
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
       </main>
@@ -446,6 +431,24 @@
     </div>
 
     
+  
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://littleyeee.com/2018/02/26/T1-T10/';
+        this.page.identifier = '2018/02/26/T1-T10/';
+        this.page.title = 'T1-T10';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//littleye.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();  
+  </script>
+
+
 
 
     
