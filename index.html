@@ -104,7 +104,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -113,7 +113,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -122,7 +122,7 @@
         <li class="mobile-menu-item">
           
           
-            About
+            关于
           
         </li>
       </a>
@@ -143,7 +143,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -152,7 +152,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -161,7 +161,7 @@
           <a class="menu-item-link" href="/about">
             
             
-              About
+              关于
             
           </a>
         </li>
@@ -177,6 +177,72 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2018/03/23/Dynamic-Programming/">Dynamic Programming</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-03-23
+        </span>
+        
+          <div class="post-category">
+            
+              <a href="/categories/基础算法/">基础算法</a>
+            
+          </div>
+        
+        
+        <div class="post-visits"
+             data-url="/2018/03/23/Dynamic-Programming/"
+             data-title="Dynamic Programming">
+            阅读次数
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>动态规划都需要有最优子结构性质  </p>
+<h2 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h2><p>O(n^2)的解法.<br>dp[i]表示以i结尾的最长的子序列,初始化为</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">0</span>,...n - <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">0</span>,...,i - <span class="number">1</span></span><br><span class="line">		<span class="keyword">if</span> a[j] &lt; a[i]</span><br><span class="line">			dp[i] = max(dp[i], dp[j] + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="最大子串和"><a href="#最大子串和" class="headerlink" title="最大子串和"></a>最大子串和</h2><p>判断当前总和是否小于0, 若小于0, 则将和置为当前数, 否则相加</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxsequence</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> len)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> maxsum, maxhere;  </span><br><span class="line">    maxsum = maxhere = a[<span class="number">0</span>];   <span class="comment">//初始化最大和为a[0]  </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;len; i++) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (maxhere &lt;= <span class="number">0</span>)  </span><br><span class="line">            maxhere = a[i];  <span class="comment">//如果前面位置最大连续子序列和小于等于0，则以当前位置i结尾的最大连续子序列和为a[i]  </span></span><br><span class="line">        <span class="keyword">else</span>  </span><br><span class="line">            maxhere += a[i]; <span class="comment">//如果前面位置最大连续子序列和大于0，则以当前位置i结尾的最大连续子序列和为它们两者之和  </span></span><br><span class="line">        <span class="keyword">if</span> (maxhere &gt; maxsum) &#123;  </span><br><span class="line">            maxsum = maxhere;  <span class="comment">//更新最大连续子序列和  </span></span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> maxsum;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="01背包问题"><a href="#01背包问题" class="headerlink" title="01背包问题"></a>01背包问题</h2><p>每种物品只能放一次<br>v倒着遍历,即从V开始到0</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">1</span>,...,N</span><br><span class="line">	<span class="keyword">for</span> v = V,...,<span class="number">0</span></span><br><span class="line">		f(v) = max(f(v), f(v - c(i)) + w[i])</span><br></pre></td></tr></table></figure>
+<h3 id="装满"><a href="#装满" class="headerlink" title="装满"></a>装满</h3><p>f(0) 初始化为0，f(1,…,V)初始化为负无穷</p>
+<h3 id="不装满"><a href="#不装满" class="headerlink" title="不装满"></a>不装满</h3><p>f(1,…,V)全部初始化为0</p>
+<h2 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h2><p>每种物品可以放无限次<br>v正着遍历。（因为一个东西可以取多次不用担心覆盖上一次的价值）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">1</span>,...,N</span><br><span class="line">	<span class="keyword">for</span> v = <span class="number">0</span>,...,V</span><br><span class="line">		f(v) = max(f(v), f(v - c(i)) + w[i])</span><br></pre></td></tr></table></figure>
+          <div class="read-more">
+            <a href="/2018/03/23/Dynamic-Programming/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
     
       
   <article class="post">
@@ -333,7 +399,7 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">	int val;</span></span><br><span class="line"><span class="comment">	struct TreeNode *left;</span></span><br><span class="line"><span class="comment">	struct TreeNode *right;</span></span><br><span class="line"><span class="comment">	TreeNode(int x) :</span></span><br><span class="line"><span class="comment">			val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; trace;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode* node, <span class="keyword">int</span> cnt)</span> </span>&#123;</span><br><span class="line">        trace.push_back(node -&gt; val);</span><br><span class="line">        <span class="keyword">if</span>(node -&gt; val == cnt &amp;&amp; !node -&gt; left &amp;&amp; !node -&gt; right) &#123;</span><br><span class="line">            result.push_back(trace);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (node -&gt; left)</span><br><span class="line">                dfs(node -&gt; left, cnt - node -&gt; val);</span><br><span class="line">            <span class="keyword">if</span> (node -&gt; right)</span><br><span class="line">                dfs(node -&gt; right, cnt - node -&gt; val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//回到上一层的时候要把元素减少一个</span></span><br><span class="line">        trace.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; FindPath(TreeNode* root,<span class="keyword">int</span> expectNumber) &#123;</span><br><span class="line">		<span class="keyword">if</span>(root) &#123;</span><br><span class="line">            dfs(root, expectNumber);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <div class="read-more">
-            <a href="/2018/03/08/T22-T30/" class="read-more-link">Read more..</a>
+            <a href="/2018/03/08/T22-T30/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -422,7 +488,7 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">采用第一种方法</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reOrderArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;<span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">   		<span class="keyword">int</span> len = <span class="built_in">array</span>.size();</span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span> || len == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">array</span>[i] &amp; <span class="number">1</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">array</span>[j] &amp; <span class="number">1</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//这个判断非常关键！！！</span></span><br><span class="line">            <span class="keyword">if</span> (j == len) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> odd = <span class="built_in">array</span>[j];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = j; k &gt;= i + <span class="number">1</span>; k--) &#123;</span><br><span class="line">                <span class="built_in">array</span>[k] = <span class="built_in">array</span>[k - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">array</span>[i] = odd;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <div class="read-more">
-            <a href="/2018/02/28/T11-T21/" class="read-more-link">Read more..</a>
+            <a href="/2018/02/28/T11-T21/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -539,7 +605,7 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stack2当作队列来操作。stack1存储元素</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">        stack1.push(node);   </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">if</span> (stack2.empty()) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!stack1.empty()) &#123;</span><br><span class="line">                stack2.push(stack1.top());</span><br><span class="line">                stack1.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = stack2.top();</span><br><span class="line">        stack2.pop();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stack1;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stack2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <div class="read-more">
-            <a href="/2018/02/26/T1-T10/" class="read-more-link">Read more..</a>
+            <a href="/2018/02/26/T1-T10/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -664,11 +730,11 @@
 
 <div class="copyright">
 <!--  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span> -->
 
