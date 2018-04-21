@@ -108,7 +108,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -117,7 +117,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -126,7 +126,7 @@
         <li class="mobile-menu-item">
           
           
-            About
+            关于
           
         </li>
       </a>
@@ -147,7 +147,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -156,7 +156,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -165,7 +165,7 @@
           <a class="menu-item-link" href="/about">
             
             
-              About
+              关于
             
           </a>
         </li>
@@ -221,10 +221,7 @@
 <li>当所有方块遍历完，栈里剩下高度递增的方块，依次计算面积，此时右边界就是数组长度 - 1</li>
 </ol>
 </blockquote>
-<p>‘’‘cpp   </p>
-<p>#include<stdio.h><br>#include<iostream><br>#include<stack><br>#include<vector><br>using namespace std;<br>stack<int> index;<br>int h[1000001];<br>int main() {<br>    int n;<br>    while (scanf (“%d”, &amp;n) != EOF) {<br>        for (int i = 0; i &lt; n; i++) {<br>            scanf(“%d”, &amp;h[i]);<br>            //h.push_back(x);<br>        }<br>        int max_area = 0, area = 0;<br>        int height, l, r;<br>        while (!index.empty()) {<br>            index.pop();<br>        }<br>        for (int i = 0; i &lt; n; i++) {<br>            if (index.empty() || h[i] &gt;= h[index.top()])<br>                index.push(i);<br>            else if (h[i] &lt; h[index.top()]){<br>                while( !index.empty() &amp;&amp; h[i] &lt; h[index.top()]) {<br>                    height = h[index.top()];<br>                    index.pop();<br>                    if (!index.empty()) {<br>                        l = index.top() + 1;<br>                    }<br>                    else {<br>                        l = 0;<br>                    }<br>                    r = i - 1;<br>                    area = (r - l + 1) <em> height;<br>                    if (area &gt; max_area)<br>                        max_area = area;<br>                }<br>                index.push(i);<br>            }<br>        }<br>        while (!index.empty()) {<br>            height = h[index.top()];<br>            index.pop();<br>            if (!index.empty()) {<br>                l = index.top() + 1;<br>            }<br>            else {<br>                l = 0;<br>            }<br>            r = n - 1;<br>            area = (r - l + 1) </em> height;<br>            if (area &gt; max_area)<br>                max_area = area;<br>        }<br>        printf (“%d\n”, max_area);<br>    }<br>    return 0;<br>}</int></vector></stack></iostream></stdio.h></p>
-<p>’‘’</p>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;  </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; index;  </span><br><span class="line"><span class="keyword">int</span> h[<span class="number">1000001</span>]; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span> (<span class="string">"%d"</span>, &amp;n) != EOF) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;h[i]);</span><br><span class="line">            <span class="comment">//h.push_back(x);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> max_area = <span class="number">0</span>, area = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> height, l, r;</span><br><span class="line">        <span class="keyword">while</span> (!index.empty()) &#123;</span><br><span class="line">            index.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (index.empty() || h[i] &gt;= h[index.top()])</span><br><span class="line">                index.push(i);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (h[i] &lt; h[index.top()])&#123;     </span><br><span class="line">                <span class="keyword">while</span>( !index.empty() &amp;&amp; h[i] &lt; h[index.top()]) &#123;</span><br><span class="line">                    height = h[index.top()];</span><br><span class="line">                    index.pop();</span><br><span class="line">                    <span class="keyword">if</span> (!index.empty()) &#123;</span><br><span class="line">                        l = index.top() + <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        l = <span class="number">0</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    r = i - <span class="number">1</span>;</span><br><span class="line">                    area = (r - l + <span class="number">1</span>) * height;</span><br><span class="line">                    <span class="keyword">if</span> (area &gt; max_area)</span><br><span class="line">                        max_area = area;</span><br><span class="line">                &#125;</span><br><span class="line">                index.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (!index.empty()) &#123;</span><br><span class="line">            height = h[index.top()];</span><br><span class="line">            index.pop();</span><br><span class="line">            <span class="keyword">if</span> (!index.empty()) &#123;</span><br><span class="line">                l = index.top() + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                l = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            r = n - <span class="number">1</span>;</span><br><span class="line">            area = (r - l + <span class="number">1</span>) * height;</span><br><span class="line">            <span class="keyword">if</span> (area &gt; max_area)</span><br><span class="line">                max_area = area;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">"%d\n"</span>, max_area);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -254,7 +251,7 @@
     
       <a class="next" href="/2018/03/29/about-Leetcode-1/">
         <span class="next-text nav-default">Leetcode practice 1</span>
-        <span class="prev-text nav-mobile">Next</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -328,11 +325,11 @@
 
 <div class="copyright">
 <!--  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span> -->
 
