@@ -17,10 +17,12 @@
 
 
 
-  <meta name="description" content="hello world"/>
+  <meta name="description" content="最大矩形面积"/>
 
 
 
+
+  <meta name="keywords" content="刷题, Littleye" />
 
 
 
@@ -40,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://littleyeee.com/2018/01/12/hello-world/"/>
+<link rel="canonical" href="http://littleyeee.com/2018/04/21/最大矩形面积/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -85,7 +87,7 @@
 
 
 
-    <title> hello world - Littleye </title>
+    <title> 最大矩形面积 - Littleye </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -183,25 +185,19 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          hello world
+          最大矩形面积
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2018-01-12
+          2018-04-21
         </span>
-        
-          <div class="post-category">
-            
-              <a href="/categories/心情日记/">心情日记</a>
-            
-          </div>
         
         
         <div class="post-visits"
-             data-url="/2018/01/12/hello-world/"
-             data-title="hello world">
+             data-url="/2018/04/21/最大矩形面积/"
+             data-title="最大矩形面积">
             阅读次数
           </div>
         
@@ -213,7 +209,21 @@
 
     <div class="post-content">
       
-        <p>所有的开始不都是以hello world 开始吗？<br>just begin with “hello world!”</p>
+        <blockquote>
+<p>给定一组非负整数组成的数组h，代表一组柱状图的高度，其中每个柱子的宽度都为1。 在这组柱状图中找到能组成的最大矩形的面积（如图所示）。 入参h为一个整型数组，代表每个柱子的高度，返回面积的值。</p>
+</blockquote>
+<p><img src="../png/maxarea.png" alt=""></p>
+<blockquote>
+<p>解题思路：<br>最开始做这题的时候，把它和leetcode的第11题弄混了【Container With Most Water】，其实两个不一样。这一题最简单的是用O(n^2)的时间复杂度去遍历左右边界，但会超时。<br>下面介绍O(n)时间复杂度的解法，用到栈，则空间复杂度也为O(n)。<br>主要的思想就是：需要以每一个柱子作为矩形的高度，然后找到它左边最后一个比它矮的柱子l（下标）和右边第一个比它矮的柱子r（下标），那么这个矩形的宽的左边界是l + 1， 右边界是r - 1, 宽度为（r - 1 - (l + 1) + 1） = (r - l - 1).<br>为了方便找到这个左右边界，用到栈。  </p>
+<ol>
+<li>如果栈为空，或者当前元素大于栈顶，则将当前元素入栈。这样保证了左边挨着的就是比它矮的。</li>
+<li>如果当前元素小于栈顶，则找到了以栈顶为高，右边第一个比它矮的方块的下标，此时栈顶出栈，计算以它为高的矩形的面积并更新最大面积。当前元素继续和栈顶比较，重复上面的操作。</li>
+<li>当所有方块遍历完，栈里剩下高度递增的方块，依次计算面积，此时右边界就是数组长度 - 1</li>
+</ol>
+</blockquote>
+<p>‘’‘cpp   </p>
+<p>#include<stdio.h><br>#include<iostream><br>#include<stack><br>#include<vector><br>using namespace std;<br>stack<int> index;<br>int h[1000001];<br>int main() {<br>    int n;<br>    while (scanf (“%d”, &amp;n) != EOF) {<br>        for (int i = 0; i &lt; n; i++) {<br>            scanf(“%d”, &amp;h[i]);<br>            //h.push_back(x);<br>        }<br>        int max_area = 0, area = 0;<br>        int height, l, r;<br>        while (!index.empty()) {<br>            index.pop();<br>        }<br>        for (int i = 0; i &lt; n; i++) {<br>            if (index.empty() || h[i] &gt;= h[index.top()])<br>                index.push(i);<br>            else if (h[i] &lt; h[index.top()]){<br>                while( !index.empty() &amp;&amp; h[i] &lt; h[index.top()]) {<br>                    height = h[index.top()];<br>                    index.pop();<br>                    if (!index.empty()) {<br>                        l = index.top() + 1;<br>                    }<br>                    else {<br>                        l = 0;<br>                    }<br>                    r = i - 1;<br>                    area = (r - l + 1) <em> height;<br>                    if (area &gt; max_area)<br>                        max_area = area;<br>                }<br>                index.push(i);<br>            }<br>        }<br>        while (!index.empty()) {<br>            height = h[index.top()];<br>            index.pop();<br>            if (!index.empty()) {<br>                l = index.top() + 1;<br>            }<br>            else {<br>                l = 0;<br>            }<br>            r = n - 1;<br>            area = (r - l + 1) </em> height;<br>            if (area &gt; max_area)<br>                max_area = area;<br>        }<br>        printf (“%d\n”, max_area);<br>    }<br>    return 0;<br>}</int></vector></stack></iostream></stdio.h></p>
+<p>’‘’</p>
 
       
     </div>
@@ -231,19 +241,19 @@
     
       <footer class="post-footer">
         
+          <div class="post-tags">
+            
+              <a href="/tags/刷题/">刷题</a>
+            
+          </div>
+        
         
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2018/02/26/T1-T10/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">T1-T10</span>
-        <span class="prev-text nav-mobile">上一篇</span>
-      </a>
     
-    
-      <a class="next" href="/2017/12/30/圣熙8号/">
-        <span class="next-text nav-default">圣熙8号</span>
+      <a class="next" href="/2018/03/29/about-Leetcode-1/">
+        <span class="next-text nav-default">Leetcode practice 1</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -353,9 +363,9 @@
   
   <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://littleyeee.com/2018/01/12/hello-world/';
-        this.page.identifier = '2018/01/12/hello-world/';
-        this.page.title = 'hello world';
+        this.page.url = 'http://littleyeee.com/2018/04/21/最大矩形面积/';
+        this.page.identifier = '2018/04/21/最大矩形面积/';
+        this.page.title = '最大矩形面积';
     };
     (function() {
     var d = document, s = d.createElement('script');
